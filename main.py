@@ -9,10 +9,10 @@ from email.mime.multipart import MIMEMultipart
 KEYWORD = "xxxxxxxxx"
 MAX_RESULTS = 20            # 获取论文数量上限
 # 邮件配置（建议用Gmail邮箱，其他邮箱暂未尝试）
-GMAIL_USER = "xxxxxx@gmail.com"       # 发件人Gmail地址
+GMAIL_USER = "your_gmail_account@gmail.com"       # 发件人Gmail地址
 # 在Google账户搜索应用专用密码可设置16位应用专用密码
-GMAIL_PASS = "xxxxxxxxxxx"   # 发件人Gmail密码（或应用专用密码）
-RECIPIENT_EMAIL = "xxxxxxxxxxx"         # 收件人邮箱地址
+GMAIL_PASS = "your_gmail_app_password_or_token"   # 发件人Gmail密码（或应用专用密码）
+RECIPIENT_EMAIL = "recipient@example.com"         # 收件人邮箱地址
 
 def fetch_latest_papers(keyword: str, max_results: int = 100):
     """从 arXiv API 获取指定关键词和类别的最新论文列表。"""
@@ -60,7 +60,7 @@ def send_email_via_gmail(subject: str, body: str, to_email: str, from_email: str
     <html>
     <body>
         <p>Hi,</p>
-        <p>以下是在 arXiv (cs 类别) 中最近24小时提交的包含关键词 '{}' 的论文：</p>
+        <p>以下是在 arXiv (cs 类别) 中最近五天提交的包含关键词 '{}' 的论文：</p>
         <ul>
     """.format(KEYWORD)
     
@@ -98,7 +98,7 @@ def send_email_via_gmail(subject: str, body: str, to_email: str, from_email: str
 
 
 if __name__ == "__main__":
-    # 计算时间范围：UTC时间的昨天到今天
+    # 计算时间范围：UTC时间的过去五天到今天
     now_utc = datetime.utcnow()
     yesterday_utc = now_utc - timedelta(days=5)
     # 获取 arXiv 最新论文并筛选过去五天提交的论文
