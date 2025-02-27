@@ -1,4 +1,4 @@
-# arXiv Daily Alert - Keyword-based Semantic Communications Paper Notifier
+# arXiv Daily Alert 
 
 This Python script queries the latest papers from **arXiv**, filtering them based on specific keywords (e.g., "Semantic Communications"). It sends an email with clickable links to the relevant papers published in the last 24 hours.
 
